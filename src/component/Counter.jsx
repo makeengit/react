@@ -1,43 +1,24 @@
-import React, { Component } from 'react'
+import React, { useState } from 'react'
 
-export default class Counter extends Component {
-constructor(){
-    super()
-    this.state ={
-        count : 0,
-        cars : ['Borsh','miniCoper','GT']
-    }
-}
-  render() {
-    return (
+export default function Counter() {
+    let [x,setX] = useState(0)
+  return (
         <>
-        <h1>count : {this.state.count}</h1>
-        <button onClick={this.increas}>increas</button>
-        <button onClick={this.decreas}>decreas</button>
-        <button onClick={this.reset}>reset</button>
+        <h1>count is : {x}</h1>
+        <button onClick={increament}>increament</button>
+        <button onClick={decreament}>decreament</button>
+        <button onClick={rest}>Reset</button>
 
-       
-                <ol>
-                    {this.state.cars.map((c)=> <li>{c}</li>)}
-                </ol>
-           
         </>
+  )
 
-    )
+  function increament(){
+    setX(++x)
   }
-  increas = ()=>{
-    this.setState({'count': ++this.state.count})
+  function decreament(){
+    setX(--x)
   }
-
-  decreas = ()=>{
-    this.setState({'count': --this.state.count})
+  function rest(){
+    setX(x=0)
   }
-  reset = ()=>{
-    this.setState({'count': this.state.count=0})
-  }
-
-
-
 }
-  
-
